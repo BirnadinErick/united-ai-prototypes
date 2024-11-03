@@ -2,6 +2,12 @@
 
 > this repo is a showcase of various prototypes for United AI
 
+## License
+
+i have released this source texts under [Apache 2.0 License](LICENSE.md) for
+easy collaboration and let United AI easily move forward if source authors
+are no longer a member.
+
 ## GCP Prototype
 
 the `gcp/` folder contains a prototype of golang app which can be used to
