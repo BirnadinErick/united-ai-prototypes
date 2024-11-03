@@ -12,7 +12,7 @@ are no longer a member.
 
 > hosted in GCP
 
-**check out the demo at uai1.methebe.com**
+**check out the demo at [uai1.methebe.com](https://uai1.methebe.com/)**
 
 the `gcp/` folder contains a prototype of golang app which can be used to
 elect project members. the aim is to experiment with a server-side binary that
