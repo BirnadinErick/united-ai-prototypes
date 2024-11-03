@@ -1,0 +1,66 @@
+{{define "home"}}
+
+<header class="py-4 md:py-8 border-b-[1px] border-neutral-400">
+    <h1 class="text-4xl font-bold">United AI</h1>
+    <h2 class="text-lg">Project Preference Tool</h2>
+</header>
+
+
+<main id="content">
+    <p class="my-4">Servus! Check out the project listing and let us know which project you want to work in.</p>
+
+    <article class="xl:grid xl:grid-cols-2 xl:gap-x-16">
+        {{range .}}
+        <div class="mb-12">
+            <h3 class="text-base font-bold mb-2">{{.Name}}</h3>
+
+            <div class="space-y-1 mb-4">
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+
+                    <p>{{.Lead}}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+
+
+                    <p>{{.By}}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+                    <p>{{.Deadline}}</p>
+                </div>
+            </div>
+
+            <div class="mb-2">
+                <img class="rounded-sm" src="{{.Cover}}" alt="project banner">
+            </div>
+
+            <div class="mb-3">
+                <p>{{.Desc}} </p>
+            </div>
+
+            <div class="flex justify-start items-center space-x-4">
+                <button hx-get="/declare-interest/{{.Id}}" hx-target="#content"
+                    class="px-4 py-1 bg-neutral-900 text-neutral-100 rounded-sm">Opt In</button>
+            </div>
+        </div>
+        {{end}}
+    </article>
+
+</main>
+
+{{end}}
