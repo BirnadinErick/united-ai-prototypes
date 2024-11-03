@@ -10,6 +10,10 @@ are no longer a member.
 
 ## GCP Prototype
 
+> hosted in GCP
+
+**check out the demo at uai1.methebe.com**
+
 the `gcp/` folder contains a prototype of golang app which can be used to
 elect project members. the aim is to experiment with a server-side binary that
 is portable to any cloud provider or on-prem services.
