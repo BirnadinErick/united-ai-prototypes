@@ -12,7 +12,7 @@ are no longer a member.
 
 > hosted in GCP
 
-**check out the demo at [uai1.methebe.com](https://uai1.methebe.com/)**
+**check out the demo at [uai-gcp.methebe.com](https://uai-gcp.methebe.com/)**
 
 the `gcp/` folder contains a prototype of golang app which can be used to
 elect project members. the aim is to experiment with a server-side binary that
@@ -57,6 +57,8 @@ tree to deployment envrionment:
 ## Vercel Prototype
 
 > hosted in vercel
+
+**check out the demo at [uai-vercel.methebe.com](https://uai-vercel.methebe.com/)**
 
 this is just an astro project in SSR mode. supabase is
 utilized as third-party datastore since vercel doesn't
