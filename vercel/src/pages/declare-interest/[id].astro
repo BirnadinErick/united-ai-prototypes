@@ -1,0 +1,114 @@
+---
+import { supabase } from "../../db";
+
+export const prerender = false;
+export const partial = true;
+
+const {id} = Astro.params;
+
+const {data, error} = await supabase.from('projects').select().eq('id', id);
+if (error) throw error;
+
+const d = data[0];
+---
+
+<form class="mb-8 md:grid md:grid-cols-2 md:gap-12" hx-post="/interest" hx-swap="outerHTML">
+    <div class="my-6">
+        <details class="md:hidden">
+            <summary class="font-bold">Selected Project: {d.name}</summary>
+
+            <div class="space-y-1 mb-4">
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+
+                    <p>{d.lead}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+
+
+                    <p>{d.by}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+                    <p>{d.deadline}</p>
+                </div>
+            </div>
+
+            <p>{d.description} </p>
+        </details>
+        <div class="hidden md:block">
+            <p class="font-bold">Selected Project: {d.name}</p>
+
+            <div class="space-y-1 mb-4">
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                    </svg>
+
+                    <p>{d.lead}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                    </svg>
+
+
+                    <p>{d.by}</p>
+                </div>
+                <div class="flex justify-start items-center space-x-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+
+                    <p>{d.deadline}</p>
+                </div>
+            </div>
+
+            <p>{d.description} </p>
+        </div>
+    </div>
+
+    <div class="border-t-[1px] border-t-neutral-200">
+        <div class="mt-6">
+            <label class="block mb-1" for="email">Registered Email: </label>
+            <input class="bg-neutral-200 text-neutral-900 p-2 w-full  rounded-sm" type="email" name="email" id="email"
+                autofocus autocomplete="email" required>
+        </div>
+
+        <div class="mt-6">
+            <label class="block mb-1" for="course">Enrolled Course: </label>
+            <input class="bg-neutral-200 text-neutral-900 p-2 w-full  rounded-sm" type="text" name="course" id="course"
+                required>
+        </div>
+
+        <div class="flex justify-start items-center space-x-2 mt-6">
+            <input class="bg-white rounded-sm p-2" type="checkbox" name="is_member" id="is_member" value="1">
+            <label for="is_member">Yes, I am a member of United AI e.V.</label>
+        </div>
+
+        <input type="hidden" name="project" value={d.id}>
+
+        <button class="mt-6 px-4 rounded-sm py-2 bg-neutral-900 text-neutral-100" type="submit">Submit</button>
+        <a class="px-4 text-sky-700" href="/">Go Back </a>
+    </div>
+</form>
