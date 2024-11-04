@@ -54,6 +54,34 @@ tree to deployment envrionment:
 
 - requires VPS with a presistent disk
 
+## Vercel Prototype
+
+> hosted in vercel
+
+this is just an astro project in SSR mode. supabase is
+utilized as third-party datastore since vercel doesn't
+provide persistent disk.
+
+this prototype uses pqsql for obvious reasons.
+
+### Features
+
+- not portable as astro ssr adapter for vercel is unique
+- relatively beginner friendly than gcp
+
+### Drawbacks
+
+- might end up in vendor-lock-in
+- expensive option if free tier is exceeded
+
+## Other Providers
+
+gcp prototype can be deployed to any VPS provider such as render,
+digital ocean etc.
+
+vercel prototype can be deployed to netlify,
+cloudflare edge etc. where astro supports SSR mode.
+
 ---
 
 Servus!
